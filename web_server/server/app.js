@@ -12,6 +12,14 @@ app.set('views', path.join(__dirname, '../client/build/'));
 app.set('view engine', 'jade');
 app.use('/static', express.static(path.join(__dirname, '../client/build/static/')));
 
+// Todo: remove this after development is done.
+// Below code is to bypass CORS error during development
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-with");
+  next();
+});
+
 
 app.use('/', index);
 app.use('/news', news);
