@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import './LoginForm.css';
+import './SignUpForm.css';
 
 // class LoginForm extends React.Component {
 
@@ -8,16 +8,17 @@ import './LoginForm.css';
 // when LoginForm doesn't have to store its state, 
 // it can be converted to a function like below
 // below using ex6 destruction
-const LoginForm = ({
+const SignUpForm = ({
     onSubmit,
     onChange,
     errors,
     user
-}) => (
+}) => {
+    return (
         <div className="container">
             <div className="card-panel login-panel">
                 <form className="col s12" action="/" onSubmit={onSubmit}>
-                    <h4 className="center-align">Login</h4>
+                    <h4 className="center-align">Sign up</h4>
                     {errors.summary && <div className="row"><p className="error-message">{errors.summary}</p></div>}
                     <div className="row">
                         <div className="input-field col s12">
@@ -33,6 +34,12 @@ const LoginForm = ({
                         </div>
                     </div>
                     {errors.password && <div className="row"><p className="error-message">{errors.password}</p></div>}
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="confirm_password" type="password" name="confirm_password" className="validate" onChange={onChange}/>
+                            <label htmlFor="confirm_password">Conform Password</label>
+                        </div>
+                    </div>
                     <div className="row right-align">
                         <input type="submit" className="waves-effect waves-light btn indigo lighten-1" value='Log in'/>
                     </div>
@@ -42,13 +49,15 @@ const LoginForm = ({
                 </form>
             </div>
         </div>
-     );  
+    )
+    
+};
 
-LoginForm.propTypes = {
+SignUpForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired
 }
 
-export default LoginForm;
+export default SignUpForm;

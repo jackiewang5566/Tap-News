@@ -4,8 +4,9 @@ import App from './App/App';
 import './index.css';
 
 import LoginPage from './Login/LoginPage';
+import SignUpPage from './SignUp/SignUpPage';
 
 ReactDOM.render(
-    <LoginPage />,
+    <SignUpPage />,
     document.getElementById('root')
 )
