@@ -1,21 +1,26 @@
+""" Backend service """
+
 import pyjsonrpc
 
 SERVER_HOST = 'localhost'
 SERVER_PORT = 4040
 
+
 class RequestHandler(pyjsonrpc.HttpRequestHandler):
-    """ Test method """
+    """ RPC request handler """
     @pyjsonrpc.rpcmethod
-    def add(self, a, b):
-        print "add is called with %d and %d" % (a, b)
-	return a + b
+    def add(self, num1, num2): # pylint: disable=no-self-use
+        """ Test method """
+        print "add is called with %d and %d" % (num1, num2)
+        return num1 + num2
+
 
 # Threading HTTP Server
-http_server = pyjsonrpc.ThreadingHttpServer(
-    server_address = (SERVER_HOST, SERVER_PORT),
-    RequestHandlerClass = RequestHandler
+HTTP_SERVER = pyjsonrpc.ThreadingHttpServer(
+    server_address=(SERVER_HOST, SERVER_PORT),
+    RequestHandlerClass=RequestHandler
 )
 
 print "Starting HTTP server on %s:%d" % (SERVER_HOST, SERVER_PORT)
 
-http_server.serve_forever()
+HTTP_SERVER.serve_forever()
