@@ -1,9 +1,10 @@
 import React, { PropTypes }  from 'react';
+import Auth from '../Auth/Auth';
 import LoginForm from './LoginForm';
 
 class LoginPage extends React.Component {
-    constructor(props) {
-        super();
+    constructor(props, context) {
+        super(props, context);
         // set the initial component state
         this.state = {
             errors: {},
@@ -25,7 +26,37 @@ class LoginPage extends React.Component {
         const password = this.state.user.password;
 
         // Post login data
-        
+        fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            cache: false,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        }).then(response => {
+            if (response.status === 200) {
+                this.setState({ 
+                    errors: {}
+                });
+
+                response.json().then(function (json) { // .json() method is an asychronous process
+                    console.log(json);
+                    Auth.authticateUser(json.token, email);
+                    this.context.router.replace('/');
+                }.bind(this));
+            } else {
+                console.log('Login failed');
+                response.json().then(function (json) {
+                    const errors = json.errors ? json.errors: {};
+                    errors.summary = json.message;
+                    this.setState({ errors });
+                }.bind(this));
+            }
+        });
     }
 
     changeUser(event) {
@@ -47,5 +78,10 @@ class LoginPage extends React.Component {
         );
     }
 }
+
+// To make react-router work
+LoginPage.contextTypes = {
+    router: PropTypes.object.isRequired
+};
 
 export default LoginPage;
