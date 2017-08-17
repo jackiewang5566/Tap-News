@@ -1,5 +1,6 @@
 import React, { PropTypes }  from 'react';
 import SignUpForm from './SignUpForm';
+import Auth from '../Auth/Auth';
 
 class SignUpPage extends React.Component {
     constructor(props, context) {
@@ -94,7 +95,7 @@ class SignUpPage extends React.Component {
 }
 
 // To make react-router work
-LoginPage.contextTypes = {
+SignUpPage.contextTypes = {
     router: PropTypes.object.isRequired
 };
 

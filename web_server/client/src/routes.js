@@ -2,7 +2,7 @@ import App from './App/App';
 import Auth from './Auth/Auth';
 import Base from './Base/Base';
 import LoginPage from './Login/LoginPage';
-import SignUpPage from './Signup/SignUpPage';
+import SignUpPage from './SignUp/SignUpPage';
 
 const routes = {
     component: Base,
