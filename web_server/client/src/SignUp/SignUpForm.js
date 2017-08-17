@@ -45,7 +45,7 @@ const SignUpForm = ({
                         <input type="submit" className="waves-effect waves-light btn indigo lighten-1" value='Log in'/>
                     </div>
                     <div className="row">
-                        <p className="right-align"> New to Tap News?  <Link to="/signup">Sign Up</Link></p>
+                        <p className="right-align"> Already have an account?  <Link to="/login">Login</Link></p>
                     </div>
                 </form>
             </div>
