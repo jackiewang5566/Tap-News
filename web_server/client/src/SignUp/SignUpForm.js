@@ -42,7 +42,7 @@ const SignUpForm = ({
                         </div>
                     </div>
                     <div className="row right-align">
-                        <input type="submit" className="waves-effect waves-light btn indigo lighten-1" value='Log in'/>
+                        <input type="submit" className="waves-effect waves-light btn indigo lighten-1" value='Sign up'/>
                     </div>
                     <div className="row">
                         <p className="right-align"> Already have an account?  <Link to="/login">Login</Link></p>

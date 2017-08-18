@@ -1,11 +1,13 @@
 var bodyParser = require('body-parser');
-var config = require('/config/config.json');
+var config = require('./config/config.json');
 var cors = require('cors');
 var express = require('express');
 var path = require('path');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 
+// routers
+var auth = require('./routes/auth'); 
 var index = require('./routes/index');
 var news = require('./routes/news');
 
@@ -41,7 +43,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/', index);
-
+app.use('/auth', auth);
 const authCheckMiddleware = require('./middleware/auth_checker');
 app.use('/news', authCheckMiddleware); // this line have to add before in /news
 app.use('/news', news);

@@ -45,7 +45,7 @@ class LoginPage extends React.Component {
 
                 response.json().then(function (json) { // .json() method is an asychronous process
                     console.log(json);
-                    Auth.authticateUser(json.token, email);
+                    Auth.authenticateUser(json.token, email);
                     this.context.router.replace('/');
                 }.bind(this));
             } else {
