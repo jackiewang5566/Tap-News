@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser');
 var config = require('/config/config.json');
 var cors = require('cors');
 var express = require('express');
@@ -28,6 +29,7 @@ passport.use('local-login', localLoginStrategy);
 // Todo: remove this after development is done.
 app.use(cors());
 
+
 // Below code is to bypass CORS error during development. If using above cors module, no need to have below code
 // app.all('*', function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -36,7 +38,12 @@ app.use(cors());
 // });
 
 
+app.use(bodyParser.json());
+
 app.use('/', index);
+
+const authCheckMiddleware = require('./middleware/auth_checker');
+app.use('/news', authCheckMiddleware); // this line have to add before in /news
 app.use('/news', news);
 
 // catch 404 and forward to error handler
