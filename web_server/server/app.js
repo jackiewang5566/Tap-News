@@ -1,3 +1,5 @@
+var config = require('/config/config.json');
+var cors = require('cors');
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -7,18 +9,22 @@ var news = require('./routes/news');
 
 var app = express();
 
+require('./models/main').connect(config.mongoDbUri);
+
 // view engine setup
 app.set('views', path.join(__dirname, '../client/build/'));
 app.set('view engine', 'jade');
 app.use('/static', express.static(path.join(__dirname, '../client/build/static/')));
 
 // Todo: remove this after development is done.
-// Below code is to bypass CORS error during development
-app.all('*', function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-with");
-  next();
-});
+app.use(cors());
+
+// Below code is to bypass CORS error during development. If using above cors module, no need to have below code
+// app.all('*', function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-with");
+//   next();
+// });
 
 
 app.use('/', index);
