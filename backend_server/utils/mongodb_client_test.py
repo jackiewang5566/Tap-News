@@ -10,6 +10,15 @@ def test_basic():
     assert db.testCollection.count() == 0
     print 'test_basic passed.'
 
+""" 
+    If this script is run directly through python mongodb_client_test.py, 
+__name__(enviromnent variable) will be interpreted as __main__; however, 
+if there are other script import mongodb_client_test.py, __name__ will be 
+the entry point of the script that import this script, it will not execute 
+test_basic() in this case.
+
+"""
+
 if __name__ == "__main__":
     test_basic()
 
