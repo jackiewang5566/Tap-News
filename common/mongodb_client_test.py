@@ -2,7 +2,7 @@
 import mongodb_client as client
 
 def test_basic():
-    """ test badic function of mongodb  """
+    """ test basic function of mongodb  """
     db = client.get_db('test')
     db.testCollection.drop()
     assert db.testCollection.count() == 0
