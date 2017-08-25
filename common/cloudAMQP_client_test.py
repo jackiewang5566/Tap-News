@@ -7,8 +7,8 @@ def test_basic():
     client = CloudAMQPClient(CLOUDAMQP_URL, TEST_QUEUE_NAME)
 
     sentMsg = {"test": "test"}
-    client.sendMessage(sentMsg)
-    receivedMsg = client.getMessage()
+    client.send_message(sentMsg)
+    receivedMsg = client.get_message()
 
     assert sentMsg == receivedMsg
     print "test_basic passed."

@@ -3,3 +3,4 @@ python-jsonrpc
 pymongo
 requests
 redis
+lxml
