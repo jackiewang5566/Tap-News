@@ -1,6 +1,8 @@
 import os
 import sys
 
+from newspaper import Article
+
 # import common package in parent directory
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'scrapers'))
@@ -26,13 +28,21 @@ def handle_message(msg):
     task = msg
     text = None
 
-    if task['source'] == 'cnn':
-        print 'scraping CNN news'
-        text = cnn_news_scraper.extract_news(task['url'])
-    else:
-        print 'news source [%s] is not supported.' % task['source']
+    # if task['source'] == 'cnn':
+    #     print 'scraping CNN news'
+    #     text = cnn_news_scraper.extract_news(task['url'])
+    # else:
+    #     print 'news source [%s] is not supported.' % task['source']
     
-    task['text'] = text
+    # task['text'] = text
+
+    article = Article(task['url'])
+    article.download()
+    article.parse()
+
+    # article.text is unicode, need to encode it to utf-8
+    task['text'] = article.text.encode('utf-8')
+
     dedupe_news_queue_client.send_message(task)
 
 while True:
