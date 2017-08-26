@@ -14,14 +14,14 @@ from cloudAMQP_client import CloudAMQPClient
 DEDUPE_NEWS_TASK_QUEUE_URL = 'amqp://sspuqxlv:su5SdhMPn-x2lnKElijEbGxLEGpZxtRT@wasp.rmq.cloudamqp.com/sspuqxlv'
 DEDUPE_NEWS_TASK_QUEUE_NAME = 'tap-news-dedupe-news-task-queue'
 
-NEWS_TABLE_NAME = 'news-test'
+NEWS_TABLE_NAME = 'news'
 SLEEP_TIME_IN_SECONDS = 1
 SAME_NEWS_SIMILARITY_THRESHOLD = 0.9
 
 cloudAMQP_client = CloudAMQPClient(DEDUPE_NEWS_TASK_QUEUE_URL, DEDUPE_NEWS_TASK_QUEUE_NAME)
 
 def handle_message(msg):
-    if msg is not None or not isinstance(msg, dict):
+    if msg is None or not isinstance(msg, dict):
         return
     task = msg
     text = task['text']

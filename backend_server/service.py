@@ -1,5 +1,6 @@
 """ Backend service """
 
+import operations
 import pyjsonrpc
 
 SERVER_HOST = 'localhost'
@@ -13,6 +14,11 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
         """ Test method """
         print "add is called with %d and %d" % (num1, num2)
         return num1 + num2
+
+    """ Get news summaries for a user """
+    @pyjsonrpc.rpcmethod
+    def getNewsSummariesForUser(self, user_id, page_num):
+        return operations.getNewsSummariesForUser(user_id, page_num)
 
 
 # Threading HTTP Server
