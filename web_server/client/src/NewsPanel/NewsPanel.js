@@ -7,7 +7,7 @@ import _ from 'lodash';
 class NewsPanel extends React.Component {
     constructor() {
         super();
-        this.state = { news: null };
+        this.state = { news: null, pageNum: 1, loadedAll: false };
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -29,7 +29,15 @@ class NewsPanel extends React.Component {
     }
 
     loadMoreNews() {
-        let request = new Request('http://localhost:3000/news', {
+        if (this.state.loadedAll) {
+            return;
+        } 
+
+        let url = 'http://localhost:3000/news/userId/' + Auth.getEmail() + '/pageNum/' + this.state.pageNum;
+
+        // in case user email has special character, which may affect the url interpolation, so need to use encodeURIComponent 
+        // to escape special character
+        let request = new Request(encodeURIComponent(url), {
             method: 'GET',
             cache: false,
             headers: {
@@ -40,8 +48,12 @@ class NewsPanel extends React.Component {
         fetch(request)
             .then(res => res.json())
             .then(news => {
+                if (!news || news.length === 0) {
+                    this.setState({ loadedAll: true });
+                }
                 this.setState({
-                    news: this.state.news ? this.state.news.concat(news) : news
+                    news: this.state.news ? this.state.news.concat(news) : news,
+                    pageNum: this.state.pageNum + 1
                 });                
             }); 
     }
