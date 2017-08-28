@@ -1,8 +1,10 @@
 var express = require('express');
+var rpc_client = require('../rpc_client/rpc_client');
 var router = express.Router();
 
 // GET news summary list
 router.get('/userId/:userId/pageNum/:pageNum', function (req, res, next) {
+    console.log('Fetching news');
     user_id = req.params['userId'];
     page_num = req.params['pageNum'];
 
@@ -19,7 +21,7 @@ router.post('/userId/:userId/newsId/:newsId', function (req, res, next) {
 
     rpc_client.logNewsClickForUser(user_id, news_id);
     res.status(200);
-})
+});
 
 
 module.exports = router;
