@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:82b978b3ceeb
 
 MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
