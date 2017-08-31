@@ -29,7 +29,8 @@ def getNewsFromSource(sources=DEFAULT_SOURCES, sortBy=SORT_BY_TOP):
             'source': source,
             'sortBy': sortBy
         }
-        response = requests.get(buildUrl(), params=payload)
+        # add verify=False using homebrew install python, then have ssl error issue
+        response = requests.get(buildUrl(), params=payload, verify=False)
 
         print response.content
         res_json = loads(response.content)
