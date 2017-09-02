@@ -7,9 +7,10 @@ Run Steps:
 4. Go to web_server/server directory, run 'npm start' to start nodemon.
 5. Go to backend_server directory, run 'python service.py' to start backend server
 6. Go to news_recommendation_service directory, run 'python recommendation_service.py' to start recommendation server
-7. Open your browser, go to localhost:3000 to see the tap-news app.
+7. Run 'python click_log_processor.py' to start recording user's log so that utilizing machine learning to send you recomended
+   news.
+8. Open your browser, go to localhost:3000 to see the tap-news app.
 
-I will add a launcher so that don't need to open so many terminal window to start it. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
