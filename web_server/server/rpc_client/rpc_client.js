@@ -18,6 +18,7 @@ function add(a, b, callback) {
 // Get news summaries for a user
 function getNewsSummariesForUser(user_id, page_num, callback) {
     client.request('getNewsSummariesForUser', [user_id, page_num], function (err, error, response) {
+        console.log(err);
         if (err) throw err;
         callback(response);
     })

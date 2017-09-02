@@ -1,3 +1,16 @@
+To run this project, you need to install Redis, MongoDB, Pythoni first.
+
+Run Steps:
+1. Open terminal window, enter command 'redis-server' to start redis
+2. Open another terminal window, enter 'mongod' to start mongodb
+3. Go to web_server/client directory, run 'npm run build' doing the build for server.
+4. Go to web_server/server directory, run 'npm start' to start nodemon.
+5. Go to backend_server directory, run 'python service.py' to start backend server
+6. Go to news_recommendation_service directory, run 'python recommendation_service.py' to start recommendation server
+7. Open your browser, go to localhost:3000 to see the tap-news app.
+
+I will add a launcher so that don't need to open so many terminal window to start it. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
