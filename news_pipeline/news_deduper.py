@@ -9,6 +9,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
 import mongodb_client
+import news_topic_modeling_service_client
+
 from cloudAMQP_client import CloudAMQPClient
 
 DEDUPE_NEWS_TASK_QUEUE_URL = 'amqp://sspuqxlv:su5SdhMPn-x2lnKElijEbGxLEGpZxtRT@wasp.rmq.cloudamqp.com/sspuqxlv'
@@ -53,6 +55,13 @@ def handle_message(msg):
                 print 'Duplicated news. Ignore.'
                 return
     task['publishedAt'] = parser.parse(task['publishedAt'])
+
+    # Classify news
+    description = task['description']
+    if description is not None:
+        topic = news_topic_modeling_service_client.classify(description)
+        task['class'] = topic
+
     db[NEWS_TABLE_NAME].replace_one({'digest': task['digest']}, task, upsert=True)
 
 
