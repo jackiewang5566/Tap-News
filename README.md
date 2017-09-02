@@ -1,6 +1,11 @@
 To run this project, you need to install Redis, MongoDB, Pythoni first.
 
 Run Steps:
+Running command 'sh tap_news_launcher.sh', waiting some time until the client side has been successfully build, 
+then open browser navigate to http://localhost:3000
+You should be able to see the whole tap-news app.
+
+Or following below steps:
 1. Open terminal window, enter command 'redis-server' to start redis
 2. Open another terminal window, enter 'mongod' to start mongodb
 3. Go to web_server/client directory, run 'npm run build' doing the build for server.
