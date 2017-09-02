@@ -70,8 +70,8 @@ def getNewsSummariesForUser(user_id, page_num):
     for news in sliced_news:
         # Remove text field to save bandwidth.
         del news['text']
-        # if news['class'] == topPreference:
-        #     news['reason'] = 'Recommend'
+        if news['class'] == topPreference:
+            news['reason'] = 'Recommend'
 
         if news['publishedAt'].date() == datetime.today().date():
             news['time'] = 'today'
