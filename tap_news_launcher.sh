@@ -4,7 +4,7 @@
 
 # pip install -r requirements.txt
 cd web_server/client
-npm run build &
+# npm run build &
 cd ../server
 npm start &
 
