@@ -10,6 +10,7 @@ Or following below steps:
 2. Open another terminal window, enter 'mongod' to start mongodb
 3. Go to web_server/client directory, run 'npm run build' doing the build for server.
 4. Go to web_server/server directory, run 'npm start' to start nodemon.
+5. Go to news_topic_modeling_service/server directory, run 'python server.py' to start predicting server.
 5. Go to backend_server directory, run 'python service.py' to start backend server
 6. Go to news_recommendation_service directory, run 'python recommendation_service.py' to start recommendation server
 7. Run 'python click_log_processor.py' to start recording user's log so that utilizing machine learning to send you recomended

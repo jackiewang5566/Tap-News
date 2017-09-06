@@ -8,6 +8,9 @@ cd web_server/client
 cd ../server
 npm start &
 
+cd ../../news_topic_modeling_service/server
+python server.py &
+
 cd ../../backend_server
 python service.py &
 
