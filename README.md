@@ -1,4 +1,7 @@
-To run this project, you need to install Redis, MongoDB, Pythoni first.
+To run this project, you need to install Redis, MongoDB, Python first.
+
+There are a couple of python package that might have different way of installation depending on your OS,
+I list all needed package in the requirement.txt, usually you only need to run 'sudo pip install -r requirement.txt' under the Tap-News directory, but there are some cases that might having errors due to the pip version or package version on your machine, try to search it and fix error first, then doing the following steps to run the project.
 
 Run Steps:
 Running command 'sh tap_news_launcher.sh', waiting some time until the client side has been successfully build, 

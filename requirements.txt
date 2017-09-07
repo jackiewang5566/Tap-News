@@ -1,5 +1,7 @@
 lxml
 newspaper
+numpy
+pandas
 pika
 python-dateutil
 python-jsonrpc
@@ -7,4 +9,5 @@ pymongo
 redis
 requests
 sklearn
+tensorflow
 watchdog
