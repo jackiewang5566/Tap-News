@@ -1,27 +1,20 @@
-To run this project, you need to install Redis, MongoDB, Python first.
+This repository is MacOSX-version of Tap-News Project, the configuration is a little bit different than Ubuntu version.
+
+To run this project, you need to install Redis, MongoDB, Python on your local machine.
+And also make sure you machine installed pip, there are a bunch of python packages need to use pip install.(See requirements.txt)
+
 
 There are a couple of python package that might have different way of installation depending on your OS,
 I list all needed package in the requirement.txt, usually you only need to run 'sudo pip install -r requirement.txt' under the Tap-News directory, but there are some cases that might having errors due to the pip version or package version on your machine, try to search it and fix error first, then doing the following steps to run the project.
 
-Since this is mac-version project, if you try to run it on Linux or Ubuntu, it might have some error. For example, bcrypt package for OSX is different from Linux version, in this case, even if you npm install all packages, there are some error might due to OS difference, so just fix those error first.
+Since this is MacOSX-version project, if you try to run it on Linux or Ubuntu, it might have some error. For example, bcrypt package for OSX is different from Linux version, in this case, even if you npm install all packages, there are some error might due to OS difference, so just fix those error first.
 
 Run Steps:
-Running command 'sh tap_news_launcher.sh', waiting some time until the client side has been successfully build, 
-then open browser navigate to http://localhost:3000
-You should be able to see the whole tap-news app.
-
-Or following below steps:
-1. Open terminal window, enter command 'redis-server' to start redis
-2. Open another terminal window, enter 'mongod' to start mongodb
-3. Go to web_server/client directory, run 'npm run build' doing the build for server.
-4. Go to web_server/server directory, run 'npm start' to start nodemon.
-5. Go to news_topic_modeling_service/server directory, run 'python server.py' to start predicting server.
-5. Go to backend_server directory, run 'python service.py' to start backend server
-6. Go to news_recommendation_service directory, run 'python recommendation_service.py' to start recommendation server
-7. Run 'python click_log_processor.py' to start recording user's log so that utilizing machine learning to send you recomended
-   news.
-8. Open your browser, go to localhost:3000 to see the tap-news app.
-
+1. Run command 'sudo pip install -r requirements.txt' to install all dependencies. 
+2. Run 'redis-server' to run redis on mac, then run mongod to open mongoDB.
+3. Run 'sh news_pipeline_launcher.sh' to create local 'tap-news' database and fetch news, store into database. 
+4. At last run 'sh tap_news_launcher.sh', waiting some time until the client side has been successfully build. 
+5. Open browser navigate to http://localhost:3000. You should be able to see the whole tap-news app.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
